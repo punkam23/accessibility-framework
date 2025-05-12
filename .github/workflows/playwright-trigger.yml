@@ -1,7 +1,12 @@
 name: Trigger Playwright E2E Tests
 
 on:
-  workflow_dispatch:  # Manual trigger only
+  workflow_dispatch:
+    inputs:
+      testPath:
+        description: 'Path or name of the test to run (e.g., tests/home.spec.ts)'
+        required: false
+        default: ''
 
 jobs:
   e2e-tests:
@@ -24,7 +29,12 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npx playwright test
+        run: |
+          if [ "${{ github.event.inputs.testPath }}" != "" ]; then
+            npx playwright test ${{ github.event.inputs.testPath }}
+          else
+            npx playwright test
+          fi
 
       - name: Upload accessibility report
         if: always()
