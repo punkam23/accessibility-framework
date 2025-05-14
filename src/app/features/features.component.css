@@ -1,0 +1,26 @@
+.feature-banner {
+  width: 100%;
+  height: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+.feature-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.close-btn {
+  width: 24px;
+  height: 24px;
+  background-color: red;
+  border: none;
+}
+
+form input {
+  margin: 0.5rem 0;
+  display: block;
+}

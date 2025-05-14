@@ -1,0 +1,55 @@
+.pricing-page {
+  padding: 2rem;
+  font-family: sans-serif;
+}
+
+h2, h3, h4 {
+  margin-top: 1rem;
+}
+
+.plans {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.plan-card {
+  border: 1px solid #ccc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  flex: 1;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.poor-contrast {
+  background-color: #f0f0f0;
+  color: #d5d5d5; /* 🧨 fails WCAG contrast checks */
+}
+
+form {
+  margin-top: 2rem;
+}
+
+input {
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.toggle {
+  width: 40px;
+  height: 20px;
+  background-color: green;
+  margin-top: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.more-info {
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  text-decoration: none;
+  background-color: #ddd;
+  padding: 0.3rem 0.5rem;
+  border-radius: 50%;
+}

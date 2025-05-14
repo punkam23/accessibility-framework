@@ -4,7 +4,7 @@ import fs from 'fs';
 import * as AxeHtmlReporter from 'axe-html-reporter';
 
 
-test('Accessibility check for UCR homepage', async ({ page }) => {
+test('Accessibility check for local home page', async ({ page }) => {
   await page.goto('/');
   // await injectAxe(page);
 

@@ -10,6 +10,10 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
+    env:
+      BASE_URL: ${{ vars.BASE_URL }}
+      ROUTES: ${{ vars.ROUTES }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
