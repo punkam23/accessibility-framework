@@ -22,7 +22,7 @@ routes.forEach((route) => {
     // Fail the test if violations are found
     if (results.violations.length > 0) {
       const report = AxeHtmlReporter.createHtmlReport(reportData);
-      fs.writeFileSync(`accessibility-report-${route}.html`, report);
+      fs.writeFileSync(`./artifacts/accessibility-report-${route}.html`, report);
       console.log('Accessibility Violations', results.violations);
       throw new Error('Accessibility violations found!');
     } else {
