@@ -39,7 +39,6 @@ jobs:
           echo "REPORT_FOLDER=playwright-report-$TIMESTAMP" >> $GITHUB_ENV
 
       - name: Upload accessibility report
-        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.REPORT_FOLDER }}
