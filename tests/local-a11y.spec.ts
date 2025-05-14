@@ -6,7 +6,6 @@ import * as AxeHtmlReporter from 'axe-html-reporter';
 
 test('Accessibility check for local home page', async ({ page }) => {
   await page.goto('/');
-  // await injectAxe(page);
 
   const axe = new AxeBuilder({ page });
 

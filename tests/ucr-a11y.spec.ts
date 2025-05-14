@@ -6,7 +6,6 @@ import * as AxeHtmlReporter from 'axe-html-reporter';
 
 test('Accessibility check for UCR homepage', async ({ page }) => {
   await page.goto('https://www.ucr.ac.cr/');
-  // await injectAxe(page);
 
   const axe = new AxeBuilder({ page });
 

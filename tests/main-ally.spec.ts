@@ -13,7 +13,6 @@ console.log(routes);
 routes.forEach((route) => {
   test(`Accessibility check for ${route}`, async ({page}) => {
     await page.goto(route);
-    // await injectAxe(page);
 
     const axe = new AxeBuilder({page});
 
