@@ -32,16 +32,16 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test main-ally.spec.ts
 
-      - name: Rename report folder
-        if: always()
-        run: |
-          TIMESTAMP=$(date +%Y%m%d-%H%M%S)
-          mv playwright-report "playwright-report-$TIMESTAMP"
-          echo "REPORT_FOLDER=playwright-report-$TIMESTAMP" >> $GITHUB_ENV
+#      - name: Rename report folder
+#        if: always()
+#        run: |
+#          TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+#          mv playwright-report "playwright-report-$TIMESTAMP"
+#          echo "REPORT_FOLDER=playwright-report-$TIMESTAMP" >> $GITHUB_ENV
 
       - name: Upload accessibility report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.REPORT_FOLDER }}
-          path: ${{ env.REPORT_FOLDER }}
+          name: accessibility-report
+          path: ./artifacts
