@@ -10,13 +10,13 @@ const routes = (process.env['ROUTES'] || '').split(',');
 const rules = (process.env['ACCESSIBILITY_RULES'] || '').split(',').map(v => v.trim()).filter(Boolean);
 const tags = (process.env['ACCESSIBILITY_TAGS'] || '').split(',').map(v => v.trim()).filter(Boolean);
 
-console.log(routes);
+console.log(`Routes ${routes}`);
 console.log(`Rules ${rules} Tags ${tags}`);
 
 routes.forEach((route) => {
   test(`Accessibility check for ${route}`, async ({page}) => {
     await page.goto(route);
-    console.log(`Rules ${rules} Tags ${tags}`);
+
     const axe = new AxeBuilder({page});
 
     if (rules && rules?.length > 0)
