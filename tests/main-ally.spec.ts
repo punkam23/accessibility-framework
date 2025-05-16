@@ -11,6 +11,7 @@ const rules = (process.env['ACCESSIBILITY_RULES'])?.split(',').filter(Boolean);
 const tags = (process.env['ACCESSIBILITY_TAGS'])?.split(',').filter(Boolean);
 
 console.log(routes);
+console.log(`Rules ${rules} Tags ${tags}`);
 
 routes.forEach((route) => {
   test(`Accessibility check for ${route}`, async ({page}) => {
