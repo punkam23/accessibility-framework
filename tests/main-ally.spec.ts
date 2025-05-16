@@ -7,8 +7,8 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 const routes = (process.env['ROUTES'] || '').split(',');
-const rules = (process.env['ACCESSIBILITY_RULES'])?.split(',');
-const tags = (process.env['ACCESSIBILITY_TAGS'])?.split(',');
+const rules = (process.env['ACCESSIBILITY_RULES'])?.split(',').filter(Boolean);
+const tags = (process.env['ACCESSIBILITY_TAGS'])?.split(',').filter(Boolean);
 
 console.log(routes);
 
@@ -18,9 +18,9 @@ routes.forEach((route) => {
 
     const axe = new AxeBuilder({page});
 
-    if (rules)
+    if (rules && rules?.length > 0)
       axe.withRules(rules);
-    else if(tags)
+    else if(tags && tags?.length > 0)
       axe.withTags(tags);
 
     // Run accessibility checks
