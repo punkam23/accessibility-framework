@@ -15,7 +15,7 @@ console.log(routes);
 routes.forEach((route) => {
   test(`Accessibility check for ${route}`, async ({page}) => {
     await page.goto(route);
-
+    console.log(`Rules ${rules} Tags ${tags}`);
     const axe = new AxeBuilder({page});
 
     if (rules && rules?.length > 0)
