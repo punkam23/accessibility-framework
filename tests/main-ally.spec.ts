@@ -7,8 +7,8 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 const routes = (process.env['ROUTES'] || '').split(',');
-const rules = (process.env['ACCESSIBILITY_RULES'] || '').split(',').filter(Boolean);
-const tags = (process.env['ACCESSIBILITY_TAGS'] || '').split(',').filter(Boolean);
+const rules = (process.env['ACCESSIBILITY_RULES'] || '').split(',').map(v => v.trim()).filter(Boolean);
+const tags = (process.env['ACCESSIBILITY_TAGS'] || '').split(',').map(v => v.trim()).filter(Boolean);
 
 console.log(routes);
 console.log(`Rules ${rules} Tags ${tags}`);
