@@ -13,6 +13,8 @@ jobs:
     env:
       BASE_URL: ${{ vars.BASE_URL }}
       ROUTES: ${{ vars.ROUTES }}
+      ACCESSIBILITY_RULES: ${{ vars.ACCESSIBILITY_RULES }}
+      ACCESSIBILITY_TAGS: ${{ vars.ACCESSIBILITY_TAGS }}
 
     steps:
       - name: Checkout code
