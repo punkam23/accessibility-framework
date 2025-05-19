@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       testPath:
-        description: 'Path or name of the test to run (e.g., tests/home.spec.ts)'
+        description: 'Url list to run accessibility test against (e.g., https://www.ucr.ac.cr/,https://www.ucr.ac.cr/estudiantes/)'
         required: false
         default: ''
 
@@ -41,4 +41,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: accessibility-report
-          path: accessibility-report.html
+          path: ./artifacts
