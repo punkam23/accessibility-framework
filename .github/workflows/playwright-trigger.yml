@@ -31,7 +31,7 @@ jobs:
       - name: Run Playwright tests
         run: |
           if [ "${{ github.event.inputs.testPath }}" != "" ]; then
-            npx playwright test ${{ github.event.inputs.testPath }}
+            npx playwright test custom-ally.spec.ts -- --scope ${{ github.event.inputs.testPath }}
           else
             npx playwright test
           fi
