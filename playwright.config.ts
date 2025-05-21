@@ -5,11 +5,15 @@ import minimist from 'minimist';
 
 const doubleDashIndex = process.argv.indexOf('--');
 const extraArgs = doubleDashIndex >= 0 ? process.argv.slice(doubleDashIndex + 1) : [];
-const argv = minimist(extraArgs, { string: ['scope'] });
+const routesArgv = minimist(extraArgs, { string: ['routes'] });
+const tagsArgv = minimist(extraArgs, { string: ['tags'] });
+const rulesArgv = minimist(extraArgs, { string: ['rules'] });
 
-const scopes = (argv['scope'] ?? '').split(',');
+const routes = (routesArgv['routes'] ?? '').split(',');
+const tags = (tagsArgv['tags'] ?? '').split(',');
+const rules = (rulesArgv['rules'] ?? '').split(',');
 
-console.log(scopes);
+console.log(routes);
 
 dotenv.config();
 
@@ -25,6 +29,8 @@ export default defineConfig({
     headless: true,
   },
   metadata: {
-    scopes
+    routes,
+    tags,
+    rules
   }
 });

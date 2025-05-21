@@ -3,11 +3,18 @@ name: Trigger Playwright E2E Tests
 on:
   workflow_dispatch:
     inputs:
-      testPath:
+      urls:
         description: 'Url list to run accessibility test against (e.g., https://www.ucr.ac.cr/,https://www.ucr.ac.cr/estudiantes/)'
         required: false
         default: ''
-
+      tags:
+        description: 'List of tags to evaluate (e.g.,wcag2aa,wcag21a)'
+        required: false
+        default: ''
+      rules:
+        description: 'List of rules to evaluate (e.g.,color-contrast,image-alt)'
+        required: false
+        default: ''
 jobs:
   e2e-tests:
     name: Run E2E Tests
@@ -30,8 +37,14 @@ jobs:
 
       - name: Run Playwright tests
         run: |
-          if [ "${{ github.event.inputs.testPath }}" != "" ]; then
-            npx playwright test custom-ally.spec.ts -- --scope ${{ github.event.inputs.testPath }}
+          if [ "${{ github.event.inputs.urls }}" != "" ]; then
+            if [ "${{ github.event.inputs.tags }}" != "" ]; then
+              npx playwright test custom-ally.spec.ts -- --routes ${{ github.event.inputs.urls }} --tags ${{ github.event.inputs.tags }}
+            elif [ "${{ github.event.inputs.rules }}" != "" ]; then
+              npx playwright test custom-ally.spec.ts -- --routes ${{ github.event.inputs.urls }} --rules ${{ github.event.inputs.rules }}
+            else
+              npx playwright test custom-ally.spec.ts -- --routes ${{ github.event.inputs.urls }}
+            fi
           else
             npx playwright test
           fi
