@@ -1,0 +1,25 @@
+<div class="container">
+  <aside class="sidebar">
+    <h3>Menú</h3>
+    <ul>
+      <li *ngFor="let item of menuItems"
+          routerLink="{{ item.route }}"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">
+        <span>{{ item.icon }}</span> {{ item.label }}
+      </li>
+    </ul>
+  </aside>
+
+  <main class="content">
+    <ng-container *ngIf="isAtHome(); else showPage">
+      <h2>Bienvenido</h2>
+      <p>Esta es la página de inicio de la aplicación. Usa el menú para navegar.</p>
+    </ng-container>
+
+
+    <ng-template #showPage>
+      <router-outlet></router-outlet>
+    </ng-template>
+  </main>
+</div>
