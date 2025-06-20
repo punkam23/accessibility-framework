@@ -32,3 +32,11 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           source: "dist/accessibility-framework/**"  # or dist/your-app-name/**
           target: "/var/www/angular-app"
+
+      - name: Trigger Accessibility Framework
+        if: ${{ success() }} # or failure(), or always()
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.REPO_ALLY_PAT }}
+          repository: punkam23/accessibility-testing-framework
+          event-type: build_completed
