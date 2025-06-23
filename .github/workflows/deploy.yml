@@ -40,3 +40,4 @@ jobs:
           token: ${{ secrets.REPO_ALLY_PAT }}
           repository: punkam23/accessibility-testing-framework
           event-type: build_completed
+          client-payload: '{"commit_sha": "${{ github.sha }}"}'
